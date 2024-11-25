@@ -1,5 +1,5 @@
 <script setup>
-  import { ref } from "vue";
+  import { onMounted, ref } from "vue";
 
   const name = ref("John Doe");
   const status = ref("active");
@@ -25,6 +25,16 @@
   const deleteTask = (index) => {
     tasks.value.splice(index, 1);
   };
+
+  onMounted(async () => {
+    try {
+      const res = await fetch("https://jsonplaceholder.typicode.com/todos");
+      const data = await res.json();
+      tasks.value = data.map((task) => task.title);
+    } catch (error) {
+      console.log("Error fetching data", error);
+    }
+  });
 </script>
 
 <template>
