@@ -4,6 +4,7 @@
   const name = ref("John Doe");
   const status = ref("active");
   const tasks = ref(["task 1", "task 2", "task 3"]);
+  const newTask = ref("");
 
   const toggleStatus = () => {
     if (status.value === "active") {
@@ -14,18 +15,38 @@
       status.value = "active";
     }
   };
+
+  const addTask = () => {
+    if (newTask.value.trim() === "") return;
+    tasks.value.push(newTask.value);
+    newTask.value = "";
+  };
+
+  const deleteTask = (index) => {
+    tasks.value.splice(index, 1);
+  };
 </script>
 
 <template>
-  <h1>Vue Jobs {{ name }}</h1>
+  <h1>Welcome, {{ name }}</h1>
   <p v-if="status === 'active'">User is active</p>
   <p v-else-if="status === 'pending'">User is pending</p>
   <p v-else>User is inactive</p>
 
+  <form @submit.prevent="addTask">
+    <label for="newTask">Add Task</label>
+    <input type="text" id="newTask" name="newTask" v-model="newTask" />
+
+    <button type="submit">Submit</button>
+  </form>
+
   <h3>Tasks</h3>
   <ul>
-    <li v-for="task in tasks" :key="task" @click="() => console.log(task)">
-      {{ task }}
+    <li v-for="(task, i) in tasks" :key="task" @click="() => console.log(task)">
+      <span>
+        {{ task }}
+      </span>
+      <button @click="deleteTask(i)">X</button>
     </li>
   </ul>
 
