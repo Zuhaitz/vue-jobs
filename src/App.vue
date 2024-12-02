@@ -9,7 +9,7 @@
   <Navbar />
   <Hero title="Test Title" subtitle="Test Subtitle" />
   <HomeCards />
-  <JobListings />
+  <JobListings :limit="3" />
 </template>
 
 <style lang="scss" scoped></style>

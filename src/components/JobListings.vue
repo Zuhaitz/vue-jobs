@@ -3,6 +3,8 @@
   import jobData from "../jobs.json";
   import JobCard from "./JobCard.vue";
 
+  defineProps({ limit: Number });
+
   const jobs = ref(jobData);
 </script>
 
@@ -13,7 +15,11 @@
         Browse Jobs
       </h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <JobCard v-for="job in jobs" :key="job.id" :job="job" />
+        <JobCard
+          v-for="job in jobs.slice(0, limit || jobs.length)"
+          :key="job.id"
+          :job="job"
+        />
       </div>
     </div>
   </section>
