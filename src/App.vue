@@ -11,5 +11,3 @@
   <HomeCards />
   <JobListings :limit="3" :show-button="true" />
 </template>
-
-<style lang="scss" scoped></style>

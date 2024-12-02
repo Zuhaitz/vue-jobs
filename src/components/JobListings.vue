@@ -9,7 +9,7 @@
 </script>
 
 <template>
-  <section class="px-4 py-10 bg-blue-50">
+  <section class="jobs-list px-4 py-10 bg-blue-50">
     <div class="container-xl lg:container m-auto">
       <h2 class="mb-6 text-3xl font-bold text-center text-green-500">
         Browse Jobs
@@ -32,3 +32,14 @@
     >
   </section>
 </template>
+
+<style scoped>
+  @media (min-width: 768px) {
+    .jobs-list .card:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+    .jobs-list .card:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+  }
+</style>
