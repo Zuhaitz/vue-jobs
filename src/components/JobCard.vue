@@ -47,7 +47,7 @@
     opacity: 0;
     animation: show ease-in;
     animation-timeline: view();
-    animation-range: entry 20%;
+    animation-range: entry 20% cover 35%;
     animation-fill-mode: both;
   }
 
@@ -76,7 +76,6 @@
       animation: show 0.6s ease;
       transition: all 0.5s;
       animation-fill-mode: forwards;
-      animation-delay: 0;
     }
   }
 </style>
